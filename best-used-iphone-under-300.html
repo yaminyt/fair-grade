@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Best Used iPhone Under $300</title>
+<meta name="description" content="The best used iPhones you can buy for under $300, with current average sale prices.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root {
+  --paper: #F2F4F1;
+  --card: #FFFFFF;
+  --ink: #17211C;
+  --muted: #56645C;
+  --rule: #D6DCD5;
+  --accent: #1D6A86;
+  --accent-soft: #DDEBF0;
+  --good: #2E7D4F;
+  --warn: #9A6A12;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121815; --card: #1A221E; --ink: #E7ECE8; --muted: #9AA89F; --rule: #2C3731;
+    --accent: #6FB6D2; --accent-soft: #1C3440; --good: #6CC292; --warn: #E0B25A; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121815; --card: #1A221E; --ink: #E7ECE8; --muted: #9AA89F; --rule: #2C3731;
+  --accent: #6FB6D2; --accent-soft: #1C3440; --good: #6CC292; --warn: #E0B25A; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header { padding-block: 28px 24px; border-bottom: 1px solid var(--rule); }
+.back { display: inline-block; font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; margin-bottom: 18px; }
+.back:hover { text-decoration: underline; }
+.brand { font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 5.5vw, 48px); line-height: 1.05; margin: 10px 0 12px; text-wrap: balance; }
+.lede { color: var(--muted); margin: 0; }
+.asof { font-family: var(--mono); font-size: 13px; color: var(--muted); margin: 10px 0 0; }
+.disclosure { margin-top: 18px; font-size: 13px; color: var(--muted); background: var(--accent-soft); border-radius: 6px; padding: 10px 12px; }
+main { padding-block: 8px 32px; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 24px; margin: 32px 0 10px; }
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tablewrap { overflow-x: auto; background: var(--card); border: 1px solid var(--rule); border-radius: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+thead th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.buy { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+.buy div { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; }
+.buy b { display: block; font-family: var(--display); font-size: 18px; margin-bottom: 8px; }
+.buy a { display: inline-block; font-size: 14px; font-weight: 600; text-decoration: none; padding: 7px 12px; border-radius: 6px; margin: 4px 6px 0 0; }
+.buy a.primary { background: var(--accent); color: var(--paper); }
+.buy a.secondary { color: var(--accent); border: 1px solid var(--rule); }
+.picks { display: grid; gap: 12px; }
+.pick { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 16px 18px; }
+.pick h3 { font-family: var(--display); font-weight: 600; font-size: 20px; margin: 0 0 2px; }
+.pick .label { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+.pick p { margin: 8px 0 0; }
+.pick .price { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.pick a.btn { display: inline-block; font-size: 14px; font-weight: 600; text-decoration: none; padding: 7px 12px; border-radius: 6px; margin: 10px 6px 0 0; }
+.pick a.primary { background: var(--accent); color: var(--paper); }
+.pick a.secondary { color: var(--accent); border: 1px solid var(--rule); }
+.sources { font-size: 14px; color: var(--muted); padding-left: 20px; }
+footer { padding-block: 24px 40px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="back" href="../">← All phone prices</a>
+    <div class="brand">Fair Grade · buying guide</div>
+    <h1>Best used iPhone under $300</h1>
+    <p class="lede">Five used iPhones that sell for under $300 right now, and which one suits you.</p>
+    <p class="asof">Prices as of November 2026</p>
+    <p class="disclosure">Some links on this page may earn us a commission if you buy. It never changes the price you pay or which phones we list.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <h2>The short answer</h2>
+  <p>Get a <strong>used iPhone 13</strong>. It sells for about $245 with 128GB and still has the same A15 Bionic chip as the iPhone 14. If you can stretch to the top of your budget, a 128GB iPhone 14 adds safety features. If you want to spend as little as possible, look at the iPhone 12 or the iPhone SE (3rd generation).</p>
+  <p>All prices below are Swappa's average sale prices as of October 7, 2026. A range covers different storage sizes, so the low end is usually the smallest storage. Only the storage sizes priced under $300 fit this budget.</p>
+
+  <h2>The picks</h2>
+  <div class="picks">
+    <div class="pick">
+      <div class="label">Best overall</div>
+      <h3>iPhone 13</h3>
+      <p class="price">$245 (128GB) · $259 (256GB)</p>
+      <p>A15 Bionic chip, 6.1-inch OLED screen, dual 12MP cameras (main and ultra wide), IP68 water resistance and up to 19 hours of rated video playback. Even 256GB stays well under $300, which makes this the easiest pick for most people.</p>
+      <a class="btn primary" href="https://www.backmarket.com/en-us/l/iphone/e8724fea-197e-4815-85ce-21b8068020cc" target="_blank" rel="noopener sponsored">Refurbished</a><a class="btn secondary" href="https://swappa.com/buy/used/apple-iphone-13" target="_blank" rel="noopener">Used on Swappa</a>
+    </div>
+    <div class="pick">
+      <div class="label">Stretch pick</div>
+      <h3>iPhone 14</h3>
+      <p class="price">$284 (128GB)</p>
+      <p>Same A15 Bionic chip and 6.1-inch OLED screen as the iPhone 13, plus Crash Detection, Emergency SOS via satellite and up to 20 hours of rated video playback. One catch: US iPhone 14 models use eSIM only and don't take a physical SIM card. The 128GB model is the one priced under $300. See our <a href="iphone-13-vs-iphone-14-used.html">iPhone 13 vs iPhone 14 guide</a> for the full comparison.</p>
+      <a class="btn primary" href="https://www.backmarket.com/en-us/l/iphone/e8724fea-197e-4815-85ce-21b8068020cc" target="_blank" rel="noopener sponsored">Refurbished</a><a class="btn secondary" href="https://swappa.com/buy/used/apple-iphone-14" target="_blank" rel="noopener">Used on Swappa</a>
+    </div>
+    <div class="pick">
+      <div class="label">Best small iPhone</div>
+      <h3>iPhone 13 mini</h3>
+      <p class="price">From $251</p>
+      <p>The same A15 Bionic chip and dual 12MP cameras as the iPhone 13 in a 5.4-inch OLED body. Rated video playback is shorter, up to 17 hours. Prices run from $251 to $399 depending on storage, so stick to the smaller sizes to stay under $300.</p>
+      <a class="btn primary" href="https://www.backmarket.com/en-us/l/iphone/e8724fea-197e-4815-85ce-21b8068020cc" target="_blank" rel="noopener sponsored">Refurbished</a>
+    </div>
+    <div class="pick">
+      <div class="label">Best under $200</div>
+      <h3>iPhone 12</h3>
+      <p class="price">$165–$200</p>
+      <p>A14 Bionic chip, 6.1-inch OLED screen, Face ID, 5G, MagSafe charging and IP68 water resistance. Rated video playback is up to 17 hours. It's a generation older than the others here, so check battery health carefully.</p>
+      <a class="btn primary" href="https://www.backmarket.com/en-us/l/iphone/e8724fea-197e-4815-85ce-21b8068020cc" target="_blank" rel="noopener sponsored">Refurbished</a><a class="btn secondary" href="https://swappa.com/buy/used/apple-iphone-12" target="_blank" rel="noopener">Used on Swappa</a>
+    </div>
+    <div class="pick">
+      <div class="label">Lowest price</div>
+      <h3>iPhone SE (3rd generation)</h3>
+      <p class="price">$120–$184</p>
+      <p>A15 Bionic chip and 5G in the classic small design: a 4.7-inch LCD screen, a Home button with Touch ID and a single 12MP camera. Rated video playback is up to 15 hours and it's IP67 water resistant. Good for anyone who wants a simple phone or prefers Touch ID.</p>
+      <a class="btn primary" href="https://www.backmarket.com/en-us/l/iphone/e8724fea-197e-4815-85ce-21b8068020cc" target="_blank" rel="noopener sponsored">Refurbished</a>
+    </div>
+  </div>
+
+  <h2>At a glance</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th scope="col">Phone</th><th scope="col">Used price</th><th scope="col">Chip</th><th scope="col">Screen</th><th scope="col">Video playback</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">iPhone 13</th><td class="num">$245–$259*</td><td>A15</td><td>6.1" OLED</td><td>19 hrs</td></tr>
+        <tr><th scope="row">iPhone 14</th><td class="num">$284*</td><td>A15</td><td>6.1" OLED</td><td>20 hrs</td></tr>
+        <tr><th scope="row">iPhone 13 mini</th><td class="num">from $251</td><td>A15</td><td>5.4" OLED</td><td>17 hrs</td></tr>
+        <tr><th scope="row">iPhone 12</th><td class="num">$165–$200</td><td>A14</td><td>6.1" OLED</td><td>17 hrs</td></tr>
+        <tr><th scope="row">iPhone SE (3rd gen)</th><td class="num">$120–$184</td><td>A15</td><td>4.7" LCD</td><td>15 hrs</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--muted)">*Storage sizes under $300 only. Battery figures are Apple's rated "up to" video playback times for a new phone; a used battery will be lower.</p>
+
+  <h2>What about the others?</h2>
+  <p><strong>iPhone 13 Pro</strong> starts at $294, so only the smallest storage size squeezes under $300. <strong>iPhone 11</strong> is cheap ($138–$207), but Swappa notes it and the iPhone SE (2nd generation) are the oldest iPhones on Apple's iOS 27 list, so they're the most exposed when Apple announces the next version's support at WWDC in June 2027. At this budget, a newer phone is the safer bet.</p>
+
+  <h2>Before you buy</h2>
+  <p>Check battery health in Settings &gt; Battery &gt; Battery Health. Swappa sets no minimum, so ask the seller for the Maximum Capacity figure. To confirm a phone is unlocked, the Carrier Lock line on the About screen should say "No SIM restrictions". Our <a href="../">pre-purchase checklist</a> covers the IMEI check, Activation Lock and safe payment.</p>
+
+  <h2>Sources</h2>
+  <ul class="sources">
+    <li><a href="https://swappa.com/blog/?p=2598" target="_blank" rel="noopener">Swappa: How Much Is My iPhone Worth? 2026 Used Values by Model (Oct 7, 2026)</a></li>
+    <li><a href="https://support.apple.com/en-au/111872" target="_blank" rel="noopener">Apple: iPhone 13 Technical Specifications</a></li>
+    <li><a href="https://support.apple.com/111850" target="_blank" rel="noopener">Apple: iPhone 14 Technical Specifications</a></li>
+    <li><a href="https://support.apple.com/en-ie/111873" target="_blank" rel="noopener">Apple: iPhone 13 mini Technical Specifications</a></li>
+    <li><a href="https://support.apple.com/en-gb/111876" target="_blank" rel="noopener">Apple: iPhone 12 Technical Specifications</a></li>
+    <li><a href="https://support.apple.com/111866" target="_blank" rel="noopener">Apple: iPhone SE (3rd generation) Technical Specifications</a></li>
+  </ul>
+</main>
+
+<footer>
+  <div class="wrap">Prices change daily; always check the listing. <a href="../">Back to all phone prices</a>.</div>
+</footer>
+</body>
+</html>

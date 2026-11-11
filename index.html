@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fair Grade Phone Prices</title>
+<meta name="description" content="What used and refurbished smartphones actually sell for, with a checklist for buying one safely.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: a price ledger. Masthead, disclosure strip, budget filter, one row per phone, buyer checklist. */
+:root {
+  --paper: #F2F4F1;
+  --card: #FFFFFF;
+  --ink: #17211C;
+  --muted: #56645C;
+  --rule: #D6DCD5;
+  --accent: #1D6A86;
+  --accent-soft: #DDEBF0;
+  --good: #2E7D4F;
+  --warn: #9A6A12;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121815; --card: #1A221E; --ink: #E7ECE8; --muted: #9AA89F; --rule: #2C3731;
+    --accent: #6FB6D2; --accent-soft: #1C3440; --good: #6CC292; --warn: #E0B25A; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121815; --card: #1A221E; --ink: #E7ECE8; --muted: #9AA89F; --rule: #2C3731;
+  --accent: #6FB6D2; --accent-soft: #1C3440; --good: #6CC292; --warn: #E0B25A; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 980px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header { padding-block: 40px 24px; border-bottom: 1px solid var(--rule); }
+.brand { font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 5.5vw, 52px); line-height: 1.05; margin: 10px 0 12px; text-wrap: balance; max-width: 18ch; }
+.lede { color: var(--muted); max-width: 62ch; margin: 0; }
+.disclosure { margin-top: 18px; font-size: 13px; color: var(--muted); background: var(--accent-soft); border-radius: 6px; padding: 10px 12px; max-width: 70ch; }
+.controls { display: flex; flex-wrap: wrap; gap: 20px 32px; align-items: end; padding-block: 24px; }
+.control label { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); margin-bottom: 6px; }
+.budget { display: flex; align-items: center; gap: 12px; }
+#budget { width: min(280px, 60vw); accent-color: var(--accent); }
+#budgetOut { font-family: var(--mono); font-variant-numeric: tabular-nums; min-width: 4ch; }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chips button { font: inherit; font-size: 14px; border: 1px solid var(--rule); background: var(--card); color: var(--ink); padding: 6px 14px; border-radius: 999px; cursor: pointer; }
+.chips button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.list { display: grid; gap: 12px; padding-bottom: 8px; }
+.row { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) auto; gap: 8px 24px; align-items: center; background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 16px 18px; }
+.row h2 { font-family: var(--display); font-weight: 600; font-size: 20px; margin: 0; }
+.row .why { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+.price { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 18px; }
+.price small { display: block; font-family: var(--body); font-size: 12px; color: var(--muted); }
+.go { display: flex; flex-direction: column; gap: 6px; align-items: stretch; }
+.go a { text-align: center; font-size: 14px; font-weight: 600; text-decoration: none; padding: 8px 14px; border-radius: 6px; white-space: nowrap; }
+.go a.primary { background: var(--accent); color: var(--paper); }
+.go a.secondary { color: var(--accent); border: 1px solid var(--rule); }
+.tag { display: inline-block; font-family: var(--mono); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; margin-left: 8px; vertical-align: 3px; }
+.tag.ios { color: var(--accent); border: 1px solid var(--accent); }
+.tag.android { color: var(--good); border: 1px solid var(--good); }
+.empty { color: var(--muted); padding: 20px 0; }
+section.check { padding-block: 32px; border-top: 1px solid var(--rule); margin-top: 24px; }
+section.check h2 { font-family: var(--display); font-size: 26px; margin: 0 0 14px; }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; padding: 0; margin: 0; list-style: none; counter-reset: s; }
+.steps li { counter-increment: s; }
+.steps li::before { content: counter(s); font-family: var(--mono); color: var(--accent); display: block; margin-bottom: 4px; }
+.steps b { display: block; }
+.steps span { color: var(--muted); font-size: 14px; }
+.guides { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.guides a { color: var(--accent); font-weight: 600; text-decoration: none; }
+.guides a:hover { text-decoration: underline; }
+.guides span { display: block; color: var(--muted); font-size: 14px; }
+footer { padding-block: 24px 40px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); }
+footer a { color: var(--accent); }
+@media (max-width: 640px) {
+  .row { grid-template-columns: minmax(0, 1fr) auto; }
+  .row .go { grid-column: 1 / -1; flex-direction: row; }
+  .go a { flex: 1; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="brand">Fair Grade · used phone prices</div>
+    <h1>What a used phone should cost this month</h1>
+    <p class="lede">Real sale prices for used and refurbished smartphones, so you know a fair deal before you buy. Prices as of November 2026.</p>
+    <p class="disclosure">Some links on this page may earn us a commission if you buy. It never changes the price you pay or which phones we list.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="controls">
+    <div class="control">
+      <label for="budget">Your budget</label>
+      <div class="budget"><input type="range" id="budget" min="150" max="450" step="10" value="400"><output id="budgetOut" for="budget">$400</output></div>
+    </div>
+    <div class="control">
+      <label id="osLabel">Phone type</label>
+      <div class="chips" role="group" aria-labelledby="osLabel">
+        <button type="button" data-os="all" aria-pressed="true">All</button>
+        <button type="button" data-os="ios" aria-pressed="false">iPhone</button>
+        <button type="button" data-os="android" aria-pressed="false">Android</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="list" id="list" aria-live="polite"></div>
+
+  <section class="check" aria-labelledby="guidesTitle">
+    <h2 id="guidesTitle">Buying guides</h2>
+    <ul class="guides" id="guides"></ul>
+  </section>
+
+  <section class="check" aria-labelledby="checkTitle">
+    <h2 id="checkTitle">Before you pay for any used phone</h2>
+    <ol class="steps">
+      <li><b>Check the IMEI</b><span>Dial *#06# and run the number through a lost-or-stolen check. A blacklisted phone won't connect to a carrier.</span></li>
+      <li><b>Confirm it's unlocked</b><span>Activation Lock (iPhone) or Google account lock (Android) must be off, or the phone is a paperweight.</span></li>
+      <li><b>Ask for battery health</b><span>Below 80% usually means a replacement soon. Factor that into the price.</span></li>
+      <li><b>Pay with protection</b><span>Use a marketplace or card with buyer protection. Never pay by gift card or wire.</span></li>
+    </ol>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    Price sources: <a href="https://swappa.com/blog/?p=2598" target="_blank" rel="noopener">Swappa used iPhone values (Oct 7, 2026)</a>,
+    <a href="https://swappa.com/blog/best-budget-android-phones-used/" target="_blank" rel="noopener">Swappa used Android guide (Jun 2026)</a>,
+    <a href="https://www.refurb.me/blog/refurbished-iphone-16e" target="_blank" rel="noopener">RefurbMe iPhone 16e prices (Nov 3, 2026)</a>.
+    Prices change daily; always check the listing.
+  </div>
+</footer>
+
+<script>
+/* Affiliate links: once Awin approves the Back Market program, replace each `bm` URL with its tracking link. */
+const phones = [
+  { name: "iPhone 12", os: "ios", low: 165, high: 200, basis: "Swappa avg. sale, Oct 2026", why: "Cheapest iPhone that still feels current. Smaller battery; check health.", swappa: "https://swappa.com/buy/used/apple-iphone-12", bm: "https://www.backmarket.com/en-us/l/iphone/e8724fea-197e-4815-85ce-21b8068020cc" },
+  { name: "Pixel 6a", os: "android", low: 130, high: 190, basis: "Swappa typical price, Jun 2026", why: "Best Android under $200. Clean software and a strong camera.", swappa: "https://swappa.com/buy/used/google-pixel-6a", bm: "https://www.backmarket.com/en-us" },
+  { name: "Pixel 7", os: "android", low: 180, high: 280, basis: "Swappa typical price, Jun 2026", why: "Flagship camera for a mid-range price.", swappa: "https://swappa.com/buy/used/google-pixel-7", bm: "https://www.backmarket.com/en-us" },
+  { name: "iPhone 13", os: "ios", low: 245, high: 347, basis: "Swappa avg. sale, Oct 2026", why: "The value pick: good battery, good camera, years of updates left.", swappa: "https://swappa.com/buy/used/apple-iphone-13", bm: "https://www.backmarket.com/en-us/l/iphone/e8724fea-197e-4815-85ce-21b8068020cc" },
+  { name: "iPhone 14", os: "ios", low: 284, high: 364, basis: "Swappa avg. sale, Oct 2026", why: "Small step up from the 13 with crash detection and satellite SOS.", swappa: "https://swappa.com/buy/used/apple-iphone-14", bm: "https://www.backmarket.com/en-us/l/iphone/e8724fea-197e-4815-85ce-21b8068020cc" },
+  { name: "iPhone 16e", os: "ios", low: 361, high: 377, basis: "Refurbished, unlocked 128GB, Nov 3, 2026", why: "Newest iPhone in this list, with a warranty when bought refurbished.", swappa: "https://swappa.com/buy/used/apple-iphone-16e", bm: "https://www.backmarket.com/en-us/l/iphone/e8724fea-197e-4815-85ce-21b8068020cc" },
+  { name: "iPhone 15", os: "ios", low: 386, high: 386, basis: "Swappa avg. sale, 128GB, Oct 2026", why: "USB-C and the Dynamic Island at about half its launch price.", swappa: "https://swappa.com/buy/used/apple-iphone-15", bm: "https://www.backmarket.com/en-us/l/iphone/e8724fea-197e-4815-85ce-21b8068020cc" }
+];
+
+/* Content agent: add one entry per published guide page, newest first. */
+const guides = [
+  { title: "Best used iPhone under $300", summary: "Five used iPhones under $300 right now, and which one suits you.", path: "guides/best-used-iphone-under-300.html" },
+  { title: "Used iPhone 13 vs iPhone 14: is the newer one worth it?", summary: "What the iPhone 14's extra $40 or so buys: safety features, camera tweaks, and US eSIM-only.", path: "guides/iphone-13-vs-iphone-14-used.html" }
+];
+const gl = document.getElementById("guides");
+if (!guides.length) { gl.innerHTML = '<li class="empty">New guides are added every Wednesday and Friday.</li>'; }
+for (const g of guides) {
+  const li = document.createElement("li");
+  const a = document.createElement("a"); a.href = g.path; a.textContent = g.title;
+  const s = document.createElement("span"); s.textContent = g.summary;
+  li.append(a, s); gl.appendChild(li);
+}
+
+const list = document.getElementById("list");
+const budget = document.getElementById("budget");
+const out = document.getElementById("budgetOut");
+let os = "all";
+try { const saved = localStorage.getItem("fg-budget"); if (saved) budget.value = saved; } catch (e) {}
+
+function money(n) { return "$" + n; }
+function render() {
+  const max = Number(budget.value);
+  out.textContent = money(max);
+  const shown = phones.filter(p => p.low <= max && (os === "all" || p.os === os));
+  list.innerHTML = "";
+  if (!shown.length) { list.innerHTML = '<p class="empty">No phones in this range yet. Try raising your budget.</p>'; return; }
+  for (const p of shown) {
+    const row = document.createElement("article");
+    row.className = "row";
+    const range = p.low === p.high ? money(p.low) : money(p.low) + "–" + money(p.high);
+    row.innerHTML =
+      '<div><h2></h2><p class="why"></p></div>' +
+      '<div class="price"></div>' +
+      '<div class="go"><a class="primary" target="_blank" rel="noopener sponsored">Refurbished</a><a class="secondary" target="_blank" rel="noopener">Used on Swappa</a></div>';
+    const h = row.querySelector("h2");
+    h.textContent = p.name;
+    const tag = document.createElement("span");
+    tag.className = "tag " + p.os;
+    tag.textContent = p.os === "ios" ? "iPhone" : "Android";
+    h.appendChild(tag);
+    row.querySelector(".why").textContent = p.why;
+    row.querySelector(".price").innerHTML = range + "<small></small>";
+    row.querySelector(".price small").textContent = p.basis;
+    row.querySelector("a.primary").href = p.bm;
+    row.querySelector("a.secondary").href = p.swappa;
+    list.appendChild(row);
+  }
+}
+budget.addEventListener("input", () => { try { localStorage.setItem("fg-budget", budget.value); } catch (e) {} render(); });
+document.querySelectorAll(".chips button").forEach(b => b.addEventListener("click", () => {
+  os = b.dataset.os;
+  document.querySelectorAll(".chips button").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+  render();
+}));
+render();
+</script>
+</body>
+</html>
